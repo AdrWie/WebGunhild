@@ -1,0 +1,47 @@
+<div ng-controller="productDetailsController">
+  <nav class="navbar navbar-default" id="categoryBar">
+    <div class="container">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"> {{ cartSize }}</span></a></li>
+        <li>
+          <a ng-hide=" product.unitsInStock == 0"></a>
+        </li>
+        <li><a href="/checkout">Till kassan: {{ cartTotalPrice }} Kr</a></li>
+      </ul>
+    </div>
+
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <img ng-src="{{ product.imageUrl }}" class="img-responsive">
+      </div>
+      <div class="col-md-6">
+
+        <table class="productTable">
+          <thead>
+            <tr>
+              <th>
+                <h2> <span ng-if="product.unitsInStock == 0" class="label label-warning">Slut<strong> {{ product.name }}</strong></h2>
+              </th>
+            </tr>
+          </thead>
+          <tbody class="detailBody">
+            <tr class="rowSpace">
+              <td> {{ product.price | currency: "SEK ": 2}} </td>
+            </tr>
+            <tr>
+              <td class="description"> {{ product.description }} </td>
+            </tr>
+          </tbody>
+        </table>
+        <td><a href="#" ng-click="addToCart(product, quantity)" class="btn btn-success btn-sm" role="button">Lägg till vara</a></td>
+        <td><a href="/checkout" class="btn btn-info btn-sm" role="button">Checka ut <span class="glyphicon glyphicon-arrow-right"></span></a></td>
+      </div>
+    </div>
+  </div>
+</div>
+<footer class="footer">
+  <p>&copy; 2017 Nackbutik</p>
+</footer>

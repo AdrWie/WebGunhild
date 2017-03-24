@@ -1,0 +1,41 @@
+<div ng-controller="productListController">   
+    <nav class="navbar navbar-default" id="categoryBar">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Kategori <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li ng-repeat="category in categories" ng-click="onCategorySelect(category.id)"> {{ category.name }} </li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"  aria-hidden="true"> </span> {{ cartSize }}</a></li>  
+        <li><a href="/checkout">Till varukorgen : {{ cartTotalPrice }} kr</a></li>
+      </ul>
+    </div>        
+    </nav>
+    <div class="container">
+    <div class="row">
+        <div ng-repeat="product in products | filter: product.name | filter: { categoryId:selectedCategory }">
+            <div class="clearfix" ng-if="$index % 3 == 0"></div>
+            <div class="col-sm-4"  id="test">
+                <div class="thumbnail">
+                    <img class="bilder" ng-src="{{ product.imageUrl }}" alt="Bild på kläder" ng-click="onProductClicked(product.id)">
+                </div>
+                <p>{{ product.name }} <span ng-if="product.unitsInStock == 0" class="label label-warning">Slut</p>
+                <p>{{ product.price }} Kr </p>
+                <tr>
+                    <td ng-hide="product.unitsInStock == 0"><a ng-click="addToCart(product, 1)" type="button" class="btn btn-danger btn-circle"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></a></td>
+                    - Lägg i kundvagn
+                </tr>
+            </div>       
+        </div>
+        
+    </div>
+    </div>
+    <footer class="footer">
+        <p>&copy; 2017 Nackbutik</p>
+    </footer>
+    
+</div>

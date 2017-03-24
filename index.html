@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Nackbutik</title>
+  
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <script src="bower_components/angular/angular.min.js"></script>
+  <script src="bower_components/angular-route/angular-route.min.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+
+  <script src="app/root/app.module.js"></script>
+  <script src="app/root/app.config.js"></script>
+  <script src="app/root/app.controller.js"></script>
+
+  <script src="app/product/product.module.js"></script>
+  <script src="app/product/product.service.js"></script>
+  <script src="app/product/product-list.controller.js"></script>
+  <script src="app/product/product-details.controller.js"></script>
+  
+  <script src="app/customer/customer.module.js"></script>
+  <script src="app/customer/customer.service.js"></script>
+  <script src="app/customer/customer.controller.js"></script>
+  <script src="app/customer/create-user.controller.js"></script>
+
+  <script src="app/shopcart/shopcart.module.js"></script>
+  <script src="app/shopcart/shopcart.service.js"></script>
+  <script src="app/shopcart/shopcart.controller.js"></script>
+
+  <script src="app/login/login.module.js"></script>
+  <script src="app/login/login.service.js"></script>
+  <script src="app/login/login.controller.js"></script>
+
+  <script src="app/order/order.module.js"></script>
+  <script src="app/order/order.service.js"></script>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body ng-app="app" ng-controller="appController">
+  <header>
+  <h1 class="home-title">Clothes by Gunhild <span my-welcome></span></h1>
+</header>
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">Hem á la Gunhild</a>
+        <form class="navbar-form navbar-left" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Sök produkt" ng-model="product.name">
+          </div>
+        </form>
+      </div>
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+          <li><a href="/signup" ng-show="!myLoggedIn"><span class="glyphicon glyphicon-user"></span> Bli medlem</a></li>
+          <li><a href="/login" ng-show="!myLoggedIn"><span class="glyphicon glyphicon-log-in"></span><span> Logga in</span></a></li>
+          <li><a href="/" ng-show="name" ><span class="glyphicon glyphicon-user"></span><span id="loggedin">{{ name }}</span></a></li>
+          <li><a href="/" ng-show="myLoggedIn" ng-click="logOut()"><span class="glyphicon glyphicon-log-out"></span><span id="logout"> Logga ut</span></a></li>
+          
+      </ul>
+    </div>
+<div ng-view></div>
+  </nav>
+  
+
+</body>
+
+</html>

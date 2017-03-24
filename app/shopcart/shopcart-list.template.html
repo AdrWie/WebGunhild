@@ -1,0 +1,35 @@
+<div class="container">
+<table class="table table-hover" ng-controller="shopcartController">
+    <thead>
+        <tr>
+            <th>Antal</th>
+            <th>Produkt</th>
+            <th>Pris</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="product in cartProducts">
+            <td>{{ product.quantity }}</td>
+            <td>{{ product.product.name }}</td>
+            <td>{{ (product.product.price * product.quantity) }} kr</td>
+            <td><a href="#" ng-click="removeFromCart($index)"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></a></td>
+        </tr>
+    </tbody>
+    <thead>
+    <tr>
+        <th></th>
+        <th>Totalpris:</th>
+        <th>{{ cartTotalPrice }} kr</th>
+        <th></th>
+    </tr>
+    </thead>
+</table>
+<div class="center-block">
+    <button  ng-click="checkOutClick()" id="order-button" ng-show="isCheckedOut" ng-hide="isCheckedOut" class="btn btn-default center-block" type="submit">Beställ</button>
+</div>
+</div>
+
+<footer class="footer">
+  <p>&copy; 2017 Nackbutik</p>
+</footer>

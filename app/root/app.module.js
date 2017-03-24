@@ -1,0 +1,1 @@
+angular.module("app", ["ui.bootstrap", "ngRoute", "product", "customer", "login", "shopcart", "order"]);
